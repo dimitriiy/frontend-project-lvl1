@@ -2,6 +2,9 @@
 install: #Install all packages
 	npm ci
 
+lint:
+	npx eslint .
+
 brain-games: #Run app
 	node bin/brain-games.js
 
