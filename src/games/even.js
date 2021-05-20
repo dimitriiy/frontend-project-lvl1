@@ -4,7 +4,7 @@ import { getRandomIntNumber } from '../utils.js';
 import { checkAnswer, greetings, startQuiz } from '../index.js';
 import { ANSWER_NO, ANSWER_YES } from '../constants.js';
 
- const isEven = (num) => num % 2 === 0;
+const isEven = (num) => num % 2 === 0;
 
 export const askQuestion = () => {
   const askingNumber = getRandomIntNumber();
@@ -20,7 +20,7 @@ export const askQuestion = () => {
   };
 };
 
-export const evenGame = () => {
+const evenGame = () => {
   const name = greetings();
   console.log('Answer "yes" if the number is even, otherwise answer "no".');
 
@@ -29,3 +29,5 @@ export const evenGame = () => {
     generateQuestionFunc: askQuestion,
   });
 };
+
+export default evenGame;

@@ -26,7 +26,7 @@ const askQuestion = () => {
   };
 };
 
-export const primeGame = () => {
+const primeGame = () => {
   const name = greetings();
   console.log('Answer "yes" if given number is prime. Otherwise answer "no".\n');
 
@@ -35,3 +35,5 @@ export const primeGame = () => {
     name,
   });
 };
+
+export default primeGame;

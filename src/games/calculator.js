@@ -16,7 +16,7 @@ const calculate = (x1, x2, operator) => {
   return computingMap[operator](x1, x2);
 };
 
-export const askQuestion = () => {
+const askQuestion = () => {
   const [firstOperand, secondOperand] = getRandomIntPair();
   const operator = OPERATORS[getRandomIntNumber() % OPERATORS.length];
   const correctAnswer = calculate(firstOperand, secondOperand, operator);
@@ -31,7 +31,7 @@ export const askQuestion = () => {
   };
 };
 
-export const calculator = () => {
+const calculator = () => {
   const name = greetings();
   console.log('What is the result of the expression?');
 
@@ -39,3 +39,5 @@ export const calculator = () => {
     name, generateQuestionFunc: askQuestion,
   });
 };
+
+export default calculator;

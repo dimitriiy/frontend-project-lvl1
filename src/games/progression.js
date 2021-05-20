@@ -37,7 +37,7 @@ export const askQuestion = () => {
   };
 };
 
-export const brainProgression = () => {
+const brainProgression = () => {
   const name = greetings();
   console.log('What number is missing in the progression?\n');
 
@@ -45,3 +45,5 @@ export const brainProgression = () => {
     name, generateQuestionFunc: askQuestion,
   });
 };
+
+export default brainProgression;
