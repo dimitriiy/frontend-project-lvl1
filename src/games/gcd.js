@@ -1,6 +1,6 @@
 import readlineSync from 'readline-sync';
 import { getRandomIntPair } from '../utils.js';
-import { startGame } from '../index.js';
+import startGame from '../index.js';
 
 const getGCD = (a, b) => {
   if (b === 0) {

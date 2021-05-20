@@ -1,6 +1,6 @@
 import readlineSync from 'readline-sync';
 
-import { startGame } from '../index.js';
+import startGame from '../index.js';
 import { checkStringAnswer, getRandomIntNumber } from '../utils.js';
 import { ANSWER_NO, ANSWER_YES } from '../constants.js';
 

@@ -1,7 +1,7 @@
 import readlineSync from 'readline-sync';
 
 import { checkStringAnswer, getRandomIntNumber } from '../utils.js';
-import { startGame } from '../index.js';
+import startGame from '../index.js';
 import { ANSWER_NO, ANSWER_YES } from '../constants.js';
 
 const isEven = (num) => num % 2 === 0;

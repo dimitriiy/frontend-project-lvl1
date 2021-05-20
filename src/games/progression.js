@@ -1,7 +1,7 @@
 import readlineSync from 'readline-sync';
 
 import { getRandomIntNumber } from '../utils.js';
-import { startGame } from '../index.js';
+import startGame from '../index.js';
 
 const getProgressionArray = (length = 10) => {
   const offset = getRandomIntNumber();

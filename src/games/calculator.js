@@ -1,5 +1,5 @@
 import readlineSync from 'readline-sync';
-import { startGame } from '../index.js';
+import startGame from '../index.js';
 import { getRandomIntNumber, getRandomIntPair } from '../utils.js';
 
 const OPERATORS = [

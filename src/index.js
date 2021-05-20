@@ -1,7 +1,7 @@
 import { NUMBER_OF_SUCCESS_TRIES } from './constants.js';
 import greetings from './greetings.js';
 
-export const startGame = ({ generateQuestionFunc, title }) => {
+const startGame = ({ generateQuestionFunc, title }) => {
   const name = greetings();
   console.log(title);
 
@@ -22,3 +22,5 @@ export const startGame = ({ generateQuestionFunc, title }) => {
 
   console.log(`Congratulations, ${name}!`);
 };
+
+export default startGame;
