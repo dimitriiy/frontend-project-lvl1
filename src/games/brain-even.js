@@ -1,10 +1,9 @@
 import readlineSync from 'readline-sync';
-import { getRandomIntNumber, isEven } from './utils.js';
-import { greetings } from './index.js';
+import { getRandomIntNumber, isEven } from '../utils.js';
+import { greetings, startQuiz } from '../index.js';
 
 export const ANSWER_YES = 'yes';
 export const ANSWER_NO = 'no';
-export const NUMBER_OF_SUCCESS_TRIES = 3;
 
 export const ANSWER_STR_TO_BOOL_MATCH = {
   [ANSWER_NO]: false,
@@ -21,7 +20,7 @@ export const checkAnswer = (answer, result) => {
   return ANSWER_STR_TO_BOOL_MATCH[answer] === result;
 };
 
-export const doAnswer = () => {
+export const askQuestion = () => {
   const askingNumber = getRandomIntNumber();
   const isEvenNumber = isEven(askingNumber);
   const userAnswer = readlineSync.question(`Question: ${askingNumber}\n`);
@@ -39,20 +38,8 @@ export const evenGame = () => {
   const name = greetings();
   console.log('Answer "yes" if the number is even, otherwise answer "no".');
 
-  let countOfCorrectAnswers = 0;
-
-  while (countOfCorrectAnswers < NUMBER_OF_SUCCESS_TRIES) {
-    const { isCorrect, userAnswer, correctAnswer } = doAnswer();
-
-    if (!isCorrect) {
-      console.log(`'${userAnswer}' is wrong answer ;(. Correct answer was '${correctAnswer}.'`);
-      console.log(`Let's try again, ${name}!`);
-      return;
-    }
-
-    console.log('Correct!');
-    countOfCorrectAnswers += 1;
-  }
-
-  console.log(`Congratulations, ${name}!`);
+  startQuiz({
+    name,
+    generateQuestionFunc: askQuestion,
+  });
 };
