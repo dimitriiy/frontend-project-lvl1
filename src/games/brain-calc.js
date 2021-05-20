@@ -1,6 +1,6 @@
 import readlineSync from 'readline-sync';
 import { greetings, startQuiz } from '../index.js';
-import { getRandomIntNumber } from '../utils.js';
+import {getRandomIntNumber, getRandomIntPair} from '../utils.js';
 
 const OPERATORS = [
   '+', '-', '*',
@@ -17,8 +17,7 @@ const calculate = (x1, x2, operator) => {
 };
 
 export const askQuestion = () => {
-  const firstOperand = getRandomIntNumber();
-  const secondOperand = getRandomIntNumber();
+  const [firstOperand, secondOperand] = getRandomIntPair();
   const operator = OPERATORS[getRandomIntNumber() % OPERATORS.length];
   const correctAnswer = calculate(firstOperand, secondOperand, operator);
 
