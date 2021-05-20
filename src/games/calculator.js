@@ -1,6 +1,6 @@
 import readlineSync from 'readline-sync';
 import { greetings, startQuiz } from '../index.js';
-import {getRandomIntNumber, getRandomIntPair} from '../utils.js';
+import { getRandomIntNumber, getRandomIntPair } from '../utils.js';
 
 const OPERATORS = [
   '+', '-', '*',
@@ -31,7 +31,7 @@ export const askQuestion = () => {
   };
 };
 
-export const brainCalc = () => {
+export const calculator = () => {
   const name = greetings();
   console.log('What is the result of the expression?');
 

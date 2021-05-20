@@ -1,24 +1,10 @@
 import readlineSync from 'readline-sync';
-import { getRandomIntNumber, isEven } from '../utils.js';
-import { greetings, startQuiz } from '../index.js';
 
-export const ANSWER_YES = 'yes';
-export const ANSWER_NO = 'no';
+import { getRandomIntNumber } from '../utils.js';
+import { checkAnswer, greetings, startQuiz } from '../index.js';
+import { ANSWER_NO, ANSWER_YES } from '../constants.js';
 
-export const ANSWER_STR_TO_BOOL_MATCH = {
-  [ANSWER_NO]: false,
-  [ANSWER_YES]: true,
-};
-
-const isValidAnswer = (str) => [ANSWER_YES, ANSWER_NO].includes(str);
-
-export const checkAnswer = (answer, result) => {
-  if (!isValidAnswer(answer)) {
-    return false;
-  }
-
-  return ANSWER_STR_TO_BOOL_MATCH[answer] === result;
-};
+ const isEven = (num) => num % 2 === 0;
 
 export const askQuestion = () => {
   const askingNumber = getRandomIntNumber();

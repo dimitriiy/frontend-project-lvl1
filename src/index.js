@@ -1,5 +1,20 @@
 import readlineSync from 'readline-sync';
-import { NUMBER_OF_SUCCESS_TRIES } from './constants.js';
+
+import { ANSWER_NO, ANSWER_YES, NUMBER_OF_SUCCESS_TRIES } from './constants.js';
+import { isValidAnswer } from './utils.js';
+
+export const ANSWER_STR_TO_BOOL_MATCH = {
+  [ANSWER_NO]: false,
+  [ANSWER_YES]: true,
+};
+
+export const checkAnswer = (answer, result) => {
+  if (!isValidAnswer(answer)) {
+    return false;
+  }
+
+  return ANSWER_STR_TO_BOOL_MATCH[answer] === result;
+};
 
 export const greetings = () => {
   console.log('Welcome to the Brain Games!');

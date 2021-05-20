@@ -1,4 +1,5 @@
 import readlineSync from 'readline-sync';
+
 import { getRandomIntNumber } from '../utils.js';
 import { greetings, startQuiz } from '../index.js';
 
@@ -6,7 +7,7 @@ const getProgressionArray = (length = 10) => {
   const offset = getRandomIntNumber();
 
   return Array.from({ length }).reduce((acc) => {
-    if (!acc.length) {
+    if (acc.length === 0) {
       return [getRandomIntNumber()];
     }
 
