@@ -1,5 +1,5 @@
 import readlineSync from 'readline-sync';
-import { greetings, startQuiz } from '../index.js';
+import { startGame } from '../index.js';
 import { getRandomIntNumber, getRandomIntPair } from '../utils.js';
 
 const OPERATORS = [
@@ -32,11 +32,11 @@ const askQuestion = () => {
 };
 
 const calculator = () => {
-  const name = greetings();
-  console.log('What is the result of the expression?');
+  const gameTitle = 'What is the result of the expression?';
 
-  startQuiz({
-    name, generateQuestionFunc: askQuestion,
+  startGame({
+    title: gameTitle,
+    generateQuestionFunc: askQuestion,
   });
 };
 

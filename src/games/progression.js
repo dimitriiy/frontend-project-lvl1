@@ -1,7 +1,7 @@
 import readlineSync from 'readline-sync';
 
 import { getRandomIntNumber } from '../utils.js';
-import { greetings, startQuiz } from '../index.js';
+import { startGame } from '../index.js';
 
 const getProgressionArray = (length = 10) => {
   const offset = getRandomIntNumber();
@@ -38,11 +38,11 @@ export const askQuestion = () => {
 };
 
 const brainProgression = () => {
-  const name = greetings();
-  console.log('What number is missing in the progression?\n');
+  const gameTitle = 'What number is missing in the progression?\n';
 
-  startQuiz({
-    name, generateQuestionFunc: askQuestion,
+  startGame({
+    title: gameTitle,
+    generateQuestionFunc: askQuestion,
   });
 };
 

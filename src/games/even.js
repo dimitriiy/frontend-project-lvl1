@@ -1,7 +1,7 @@
 import readlineSync from 'readline-sync';
 
-import { getRandomIntNumber } from '../utils.js';
-import { checkAnswer, greetings, startQuiz } from '../index.js';
+import { checkStringAnswer, getRandomIntNumber } from '../utils.js';
+import { startGame } from '../index.js';
 import { ANSWER_NO, ANSWER_YES } from '../constants.js';
 
 const isEven = (num) => num % 2 === 0;
@@ -11,7 +11,7 @@ export const askQuestion = () => {
   const isEvenNumber = isEven(askingNumber);
   const userAnswer = readlineSync.question(`Question: ${askingNumber}\n`);
 
-  const isCorrect = checkAnswer(userAnswer, isEvenNumber);
+  const isCorrect = checkStringAnswer(userAnswer, isEvenNumber);
 
   return {
     isCorrect,
@@ -21,11 +21,10 @@ export const askQuestion = () => {
 };
 
 const evenGame = () => {
-  const name = greetings();
-  console.log('Answer "yes" if the number is even, otherwise answer "no".');
+  const gameTitle = 'Answer "yes" if the number is even, otherwise answer "no".';
 
-  startQuiz({
-    name,
+  startGame({
+    title: gameTitle,
     generateQuestionFunc: askQuestion,
   });
 };

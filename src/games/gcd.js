@@ -1,6 +1,6 @@
 import readlineSync from 'readline-sync';
 import { getRandomIntPair } from '../utils.js';
-import { greetings, startQuiz } from '../index.js';
+import { startGame } from '../index.js';
 
 const getGCD = (a, b) => {
   if (b === 0) {
@@ -25,11 +25,10 @@ const askQuestion = () => {
 };
 
 const brainGcd = () => {
-  const name = greetings();
-  console.log('Find the greatest common divisor of given numbers.');
+  const gameTitle = 'Find the greatest common divisor of given numbers.';
 
-  startQuiz({
-    name,
+  startGame({
+    title: gameTitle,
     generateQuestionFunc: askQuestion,
   });
 };

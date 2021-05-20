@@ -1,7 +1,7 @@
 import readlineSync from 'readline-sync';
 
-import { checkAnswer, greetings, startQuiz } from '../index.js';
-import { getRandomIntNumber } from '../utils.js';
+import { startGame } from '../index.js';
+import { checkStringAnswer, getRandomIntNumber } from '../utils.js';
 import { ANSWER_NO, ANSWER_YES } from '../constants.js';
 
 const isPrime = (num) => {
@@ -12,12 +12,13 @@ const isPrime = (num) => {
   }
   return num > 1;
 };
+
 const askQuestion = () => {
   const askingNumber = getRandomIntNumber();
   const isEvenNumber = isPrime(askingNumber);
   const userAnswer = readlineSync.question(`Question: ${askingNumber}\n`);
 
-  const isCorrect = checkAnswer(userAnswer, isEvenNumber);
+  const isCorrect = checkStringAnswer(userAnswer, isEvenNumber);
 
   return {
     isCorrect,
@@ -27,12 +28,11 @@ const askQuestion = () => {
 };
 
 const primeGame = () => {
-  const name = greetings();
-  console.log('Answer "yes" if given number is prime. Otherwise answer "no".\n');
+  const titleGame = 'Answer "yes" if given number is prime. Otherwise answer "no"';
 
-  startQuiz({
+  startGame({
     generateQuestionFunc: askQuestion,
-    name,
+    title: titleGame,
   });
 };
 

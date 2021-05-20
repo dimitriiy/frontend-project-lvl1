@@ -1,20 +1,6 @@
 import readlineSync from 'readline-sync';
 
-import { ANSWER_NO, ANSWER_YES, NUMBER_OF_SUCCESS_TRIES } from './constants.js';
-import { isValidAnswer } from './utils.js';
-
-export const ANSWER_STR_TO_BOOL_MATCH = {
-  [ANSWER_NO]: false,
-  [ANSWER_YES]: true,
-};
-
-export const checkAnswer = (answer, result) => {
-  if (!isValidAnswer(answer)) {
-    return false;
-  }
-
-  return ANSWER_STR_TO_BOOL_MATCH[answer] === result;
-};
+import { NUMBER_OF_SUCCESS_TRIES } from './constants.js';
 
 export const greetings = () => {
   console.log('Welcome to the Brain Games!');
@@ -27,7 +13,10 @@ export const greetings = () => {
   return name;
 };
 
-export const startQuiz = ({ generateQuestionFunc, name }) => {
+export const startGame = ({ generateQuestionFunc, title }) => {
+  const name = greetings();
+  console.log(title);
+
   let countOfCorrectAnswers = 0;
 
   while (countOfCorrectAnswers < NUMBER_OF_SUCCESS_TRIES) {
