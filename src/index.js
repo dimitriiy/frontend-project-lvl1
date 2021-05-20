@@ -1,17 +1,5 @@
-import readlineSync from 'readline-sync';
-
 import { NUMBER_OF_SUCCESS_TRIES } from './constants.js';
-
-export const greetings = () => {
-  console.log('Welcome to the Brain Games!');
-  const name = readlineSync.question('May I have your name? ');
-
-  if (name) {
-    console.log(`Hello, ${name}!`);
-  }
-
-  return name;
-};
+import greetings from './greetings.js';
 
 export const startGame = ({ generateQuestionFunc, title }) => {
   const name = greetings();

@@ -1,4 +1,4 @@
-import { greetings } from '../index.js';
+import greetings from '../greetings.js';
 
 export default () => {
   greetings();
