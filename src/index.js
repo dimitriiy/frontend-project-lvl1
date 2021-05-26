@@ -1,8 +1,12 @@
+import readlineSync from 'readline-sync';
 import { NUMBER_OF_SUCCESS_TRIES } from './constants.js';
-import greetings from './greetings.js';
 
-const startGame = ({ generateQuestionFunc, title }) => {
-  const name = greetings();
+const startGame = (gameParamsCreator) => {
+  console.log('Welcome to the Brain Games!');
+  const name = readlineSync.question('May I have your name? ');
+  console.log(`Hello, ${name}!`);
+
+  const { generateQuestionFunc, title } = gameParamsCreator();
   console.log(title);
 
   let countOfCorrectAnswers = 0;

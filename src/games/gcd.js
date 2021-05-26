@@ -24,13 +24,17 @@ const askQuestion = () => {
   };
 };
 
-const brainGcd = () => {
+const gameParamsConstructor = () => {
   const gameTitle = 'Find the greatest common divisor of given numbers.';
 
-  startGame({
+  return {
     title: gameTitle,
     generateQuestionFunc: askQuestion,
-  });
+  };
+};
+
+const brainGcd = () => {
+  startGame(gameParamsConstructor);
 };
 
 export default brainGcd;

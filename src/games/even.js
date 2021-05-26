@@ -20,13 +20,17 @@ export const askQuestion = () => {
   };
 };
 
-const evenGame = () => {
+const gameParamsConstructor = () => {
   const gameTitle = 'Answer "yes" if the number is even, otherwise answer "no".';
 
-  startGame({
+  return {
     title: gameTitle,
     generateQuestionFunc: askQuestion,
-  });
+  };
+};
+
+const evenGame = () => {
+  startGame(gameParamsConstructor);
 };
 
 export default evenGame;

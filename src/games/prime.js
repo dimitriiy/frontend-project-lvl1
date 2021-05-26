@@ -27,13 +27,17 @@ const askQuestion = () => {
   };
 };
 
-const primeGame = () => {
-  const titleGame = 'Answer "yes" if given number is prime. Otherwise answer "no"';
+const gameParamsConstructor = () => {
+  const gameTitle = 'Answer "yes" if given number is prime. Otherwise answer "no"';
 
-  startGame({
+  return {
+    title: gameTitle,
     generateQuestionFunc: askQuestion,
-    title: titleGame,
-  });
+  };
+};
+
+const primeGame = () => {
+  startGame(gameParamsConstructor);
 };
 
 export default primeGame;

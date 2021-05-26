@@ -37,13 +37,17 @@ export const askQuestion = () => {
   };
 };
 
-const brainProgression = () => {
+const gameParamsConstructor = () => {
   const gameTitle = 'What number is missing in the progression?\n';
 
-  startGame({
+  return {
     title: gameTitle,
     generateQuestionFunc: askQuestion,
-  });
+  };
+};
+
+const brainProgression = () => {
+  startGame(gameParamsConstructor);
 };
 
 export default brainProgression;

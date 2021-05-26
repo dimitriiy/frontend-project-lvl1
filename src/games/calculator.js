@@ -18,7 +18,7 @@ const calculate = (x1, x2, operator) => {
 
 const askQuestion = () => {
   const [firstOperand, secondOperand] = getRandomIntPair();
-  const operator = OPERATORS[getRandomIntNumber() % OPERATORS.length];
+  const operator = getRandomIntNumber(0, OPERATORS.length);
   const correctAnswer = calculate(firstOperand, secondOperand, operator);
 
   const userAnswer = readlineSync.question(`Question: ${firstOperand} ${operator} ${secondOperand}\nYour answer: `);
@@ -27,17 +27,21 @@ const askQuestion = () => {
   return {
     isCorrect,
     correctAnswer,
-    userAnswer,
+    userAnswer,x
+  };
+};
+
+const gameParamsConstructor = () => {
+  const gameTitle = 'What is the result of the expression?';
+
+  return {
+    title: gameTitle,
+    generateQuestionFunc: askQuestion,
   };
 };
 
 const calculator = () => {
-  const gameTitle = 'What is the result of the expression?';
-
-  startGame({
-    title: gameTitle,
-    generateQuestionFunc: askQuestion,
-  });
+  startGame(gameParamsConstructor);
 };
 
 export default calculator;
