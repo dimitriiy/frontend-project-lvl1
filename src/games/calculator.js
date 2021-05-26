@@ -18,7 +18,7 @@ const calculate = (x1, x2, operator) => {
 
 const askQuestion = () => {
   const [firstOperand, secondOperand] = getRandomIntPair();
-  const operator = getRandomIntNumber(0, OPERATORS.length);
+  const operator = OPERATORS[getRandomIntNumber(0, OPERATORS.length - 1)];
   const correctAnswer = calculate(firstOperand, secondOperand, operator);
 
   const userAnswer = readlineSync.question(`Question: ${firstOperand} ${operator} ${secondOperand}\nYour answer: `);
