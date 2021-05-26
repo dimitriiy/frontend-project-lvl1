@@ -27,7 +27,7 @@ const askQuestion = () => {
   return {
     isCorrect,
     correctAnswer,
-    userAnswer,x
+    userAnswer,
   };
 };
 
