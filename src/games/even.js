@@ -1,4 +1,4 @@
-import { getRandomIntNumber, isEqualStringsAsNumber } from '../utils.js';
+import { getRandomIntNumber } from '../utils.js';
 import startGame from '../index.js';
 import { ANSWER_NO, ANSWER_YES } from '../constants.js';
 
