@@ -1,6 +1,5 @@
-import readlineSync from 'readline-sync';
 import startGame from '../index.js';
-import { getRandomIntNumber, getRandomIntPair } from '../utils.js';
+import { getRandomIntNumber, getRandomIntPair, isEqualStringsAsNumber } from '../utils.js';
 
 const OPERATORS = [
   '+', '-', '*',
@@ -21,13 +20,10 @@ const askQuestion = () => {
   const operator = OPERATORS[getRandomIntNumber(0, OPERATORS.length - 1)];
   const correctAnswer = calculate(firstOperand, secondOperand, operator);
 
-  const userAnswer = readlineSync.question(`Question: ${firstOperand} ${operator} ${secondOperand}\nYour answer: `);
-  const isCorrect = +userAnswer === correctAnswer;
-
   return {
-    isCorrect,
+    equal: isEqualStringsAsNumber,
+    questionText: `Question: ${firstOperand} ${operator} ${secondOperand}`,
     correctAnswer,
-    userAnswer,
   };
 };
 

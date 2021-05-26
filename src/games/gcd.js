@@ -1,5 +1,4 @@
-import readlineSync from 'readline-sync';
-import { getRandomIntPair } from '../utils.js';
+import { getRandomIntPair, isEqualStringsAsNumber } from '../utils.js';
 import startGame from '../index.js';
 
 const getGCD = (a, b) => {
@@ -13,14 +12,10 @@ const askQuestion = () => {
   const [firstOperand, secondOperand] = getRandomIntPair();
   const correctAnswer = getGCD(firstOperand, secondOperand);
 
-  const userAnswer = readlineSync.question(`Question: ${firstOperand} ${secondOperand}\nYour answer: `);
-
-  const isCorrect = +userAnswer === correctAnswer;
-
   return {
-    isCorrect,
+    equal: isEqualStringsAsNumber,
+    questionText: `Question: ${firstOperand} ${secondOperand}`,
     correctAnswer,
-    userAnswer,
   };
 };
 

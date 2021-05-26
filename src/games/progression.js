@@ -1,6 +1,4 @@
-import readlineSync from 'readline-sync';
-
-import { getRandomIntNumber } from '../utils.js';
+import { getRandomIntNumber, isEqualStringsAsNumber } from '../utils.js';
 import startGame from '../index.js';
 
 const getProgressionArray = (length = 10) => {
@@ -26,14 +24,10 @@ export const askQuestion = () => {
   const hiddenNumber = progression[hiddenNumberIndex];
   progression[hiddenNumberIndex] = '..';
 
-  const userAnswer = readlineSync.question(`Question: ${progression.join(' ')}\nYour answer: `);
-
-  const isCorrect = +userAnswer === hiddenNumber;
-
   return {
-    isCorrect,
+    equal: isEqualStringsAsNumber,
+    questionText: `Question: ${progression.join(' ')}`,
     correctAnswer: hiddenNumber,
-    userAnswer,
   };
 };
 
