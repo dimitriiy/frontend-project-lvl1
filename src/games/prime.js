@@ -1,5 +1,5 @@
 import startGame from '../index.js';
-import { getRandomIntNumber, isEqualStringsAsNumber } from '../utils.js';
+import { getRandomIntNumber } from '../utils.js';
 import { ANSWER_NO, ANSWER_YES } from '../constants.js';
 
 const isPrime = (num) => {
@@ -16,7 +16,6 @@ const askQuestion = () => {
   const isEvenNumber = isPrime(askingNumber);
 
   return {
-    equal: isEqualStringsAsNumber,
     questionText: `Question: ${askingNumber}\n`,
     correctAnswer: isEvenNumber ? ANSWER_YES : ANSWER_NO,
   };
