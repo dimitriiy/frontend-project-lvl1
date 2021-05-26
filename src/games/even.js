@@ -9,7 +9,6 @@ export const askQuestion = () => {
   const isEvenNumber = isEven(askingNumber);
 
   return {
-    equal: isEqualStringsAsNumber,
     questionText: `Question: ${askingNumber}`,
     correctAnswer: isEvenNumber ? ANSWER_YES : ANSWER_NO,
   };
