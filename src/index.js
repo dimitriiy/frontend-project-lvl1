@@ -1,6 +1,5 @@
 import readlineSync from 'readline-sync';
 import { NUMBER_OF_SUCCESS_TRIES } from './constants.js';
-import { isEqual } from './utils.js';
 
 const startGame = (gameParamsCreator) => {
   console.log('Welcome to the Brain Games!');
@@ -13,10 +12,12 @@ const startGame = (gameParamsCreator) => {
   let countOfCorrectAnswers = 0;
 
   while (countOfCorrectAnswers < NUMBER_OF_SUCCESS_TRIES) {
-    const { equal = isEqual, questionText, correctAnswer } = generateQuestionFunc();
-    const userAnswer = readlineSync.question(`${questionText}\nYour answer: `);
+    const { questionText, correctAnswer } = generateQuestionFunc();
 
-    if (!equal(userAnswer, correctAnswer)) {
+    console.log(`${questionText}\n`);
+    const userAnswer = readlineSync.question('Your answer: ');
+
+    if (userAnswer !== correctAnswer) {
       console.log(`'${userAnswer}' is wrong answer ;(. Correct answer was '${correctAnswer}'.`);
       console.log(`Let's try again, ${name}!`);
       return;

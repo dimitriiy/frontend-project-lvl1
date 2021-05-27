@@ -1,5 +1,5 @@
 import startGame from '../index.js';
-import { getRandomIntNumber, getRandomIntPair, isEqualStringsAsNumber } from '../utils.js';
+import { getRandomIntNumber, getRandomIntPair, prepareNumberToAnswer } from '../utils.js';
 
 const OPERATORS = [
   '+', '-', '*',
@@ -18,12 +18,11 @@ const calculate = (x1, x2, operator) => {
 const askQuestion = () => {
   const [firstOperand, secondOperand] = getRandomIntPair();
   const operator = OPERATORS[getRandomIntNumber(0, OPERATORS.length - 1)];
-  const correctAnswer = calculate(firstOperand, secondOperand, operator);
+  const calculatedValue = calculate(firstOperand, secondOperand, operator);
 
   return {
-    equal: isEqualStringsAsNumber,
     questionText: `Question: ${firstOperand} ${operator} ${secondOperand}`,
-    correctAnswer,
+    correctAnswer: prepareNumberToAnswer(calculatedValue),
   };
 };
 

@@ -1,4 +1,4 @@
-import { getRandomIntPair, isEqualStringsAsNumber } from '../utils.js';
+import { getRandomIntPair, prepareNumberToAnswer } from '../utils.js';
 import startGame from '../index.js';
 
 const getGCD = (a, b) => {
@@ -10,12 +10,11 @@ const getGCD = (a, b) => {
 
 const askQuestion = () => {
   const [firstOperand, secondOperand] = getRandomIntPair();
-  const correctAnswer = getGCD(firstOperand, secondOperand);
+  const gcdValue = getGCD(firstOperand, secondOperand);
 
   return {
-    equal: isEqualStringsAsNumber,
     questionText: `Question: ${firstOperand} ${secondOperand}`,
-    correctAnswer,
+    correctAnswer: prepareNumberToAnswer(gcdValue),
   };
 };
 

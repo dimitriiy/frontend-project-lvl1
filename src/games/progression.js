@@ -1,4 +1,4 @@
-import { getRandomIntNumber, isEqualStringsAsNumber } from '../utils.js';
+import { getRandomIntNumber, prepareNumberToAnswer } from '../utils.js';
 import startGame from '../index.js';
 
 const getProgressionArray = (length = 10) => {
@@ -25,9 +25,8 @@ export const askQuestion = () => {
   progression[hiddenNumberIndex] = '..';
 
   return {
-    equal: isEqualStringsAsNumber,
     questionText: `Question: ${progression.join(' ')}`,
-    correctAnswer: hiddenNumber,
+    correctAnswer: prepareNumberToAnswer(hiddenNumber),
   };
 };
 
