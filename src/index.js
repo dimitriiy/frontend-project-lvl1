@@ -14,7 +14,7 @@ const startGame = (gameParamsCreator) => {
   while (countOfCorrectAnswers < NUMBER_OF_SUCCESS_TRIES) {
     const { questionText, correctAnswer } = generateQuestionFunc();
 
-    console.log(`${questionText}\n`);
+    console.log(questionText);
     const userAnswer = readlineSync.question('Your answer: ');
 
     if (userAnswer !== correctAnswer) {
