@@ -3,7 +3,7 @@
 <a href="https://codeclimate.com/github/codeclimate/codeclimate/maintainability"><img src="https://api.codeclimate.com/v1/badges/a99a88d28ad37a79dbf6/maintainability" /></a>
 [![main](https://github.com/dimitriiy/frontend-project-lvl1/actions/workflows/github-actions-main.yml/badge.svg)](https://github.com/dimitriiy/frontend-project-lvl1/actions/workflows/github-actions-main.yml)
 
-##Installing
+### Installing
 ```bash
 git clone git@github.com:aminin/frontend-project-lvl1.git
 cd frontend-project-lvl1
