@@ -1,7 +1,8 @@
 import { getRandomNumber, prepareNumberToAnswer } from '../utils.js';
 import playGame from '../index.js';
 
-const getProgression = ({ start, offset, length = 10 }) => Array.from({ length }).reduce((acc) => {
+// eslint-disable-next-line max-len
+const getProgression = ({ offset, start = 0, length = 10 }) => Array.from({ length }).reduce((acc) => {
   if (acc.length === 0) {
     return [start];
   }
