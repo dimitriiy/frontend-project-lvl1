@@ -16,11 +16,11 @@ const isPrime = (num) => {
 
 const askQuestion = () => {
   const askingNumber = getRandomNumber();
-  const evenNumber = isPrime(askingNumber);
+  const primeNumber = isPrime(askingNumber);
 
   return {
     questionText: askingNumber,
-    correctAnswer: evenNumber ? ANSWER_YES : ANSWER_NO,
+    correctAnswer: primeNumber ? ANSWER_YES : ANSWER_NO,
   };
 };
 
