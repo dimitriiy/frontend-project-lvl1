@@ -42,5 +42,3 @@ const brainProgression = () => {
 };
 
 export default brainProgression;
-
-brainProgression()
