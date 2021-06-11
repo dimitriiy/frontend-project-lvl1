@@ -1,15 +1,15 @@
-import { getRandomIntNumber } from '../utils.js';
-import startGame from '../index.js';
+import { getRandomNumber } from '../utils.js';
+import playGame from '../index.js';
 import { ANSWER_NO, ANSWER_YES } from '../constants.js';
 
 const isEven = (num) => num % 2 === 0;
 
 export const askQuestion = () => {
-  const askingNumber = getRandomIntNumber();
+  const askingNumber = getRandomNumber();
   const isEvenNumber = isEven(askingNumber);
 
   return {
-    questionText: `Question: ${askingNumber}`,
+    questionText: askingNumber,
     correctAnswer: isEvenNumber ? ANSWER_YES : ANSWER_NO,
   };
 };
@@ -19,12 +19,12 @@ const gameParamsConstructor = () => {
 
   return {
     title: gameTitle,
-    generateQuestionFunc: askQuestion,
+    makeQuestion: askQuestion,
   };
 };
 
 const evenGame = () => {
-  startGame(gameParamsConstructor);
+  playGame(gameParamsConstructor);
 };
 
 export default evenGame;

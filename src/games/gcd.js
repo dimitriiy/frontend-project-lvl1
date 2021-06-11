@@ -1,5 +1,5 @@
 import { getRandomIntPair, prepareNumberToAnswer } from '../utils.js';
-import startGame from '../index.js';
+import playGame from '../index.js';
 
 const getGCD = (a, b) => {
   if (b === 0) {
@@ -13,7 +13,7 @@ const askQuestion = () => {
   const gcdValue = getGCD(firstOperand, secondOperand);
 
   return {
-    questionText: `Question: ${firstOperand} ${secondOperand}`,
+    questionText: `${firstOperand} ${secondOperand}`,
     correctAnswer: prepareNumberToAnswer(gcdValue),
   };
 };
@@ -23,12 +23,12 @@ const gameParamsConstructor = () => {
 
   return {
     title: gameTitle,
-    generateQuestionFunc: askQuestion,
+    makeQuestion: askQuestion,
   };
 };
 
 const brainGcd = () => {
-  startGame(gameParamsConstructor);
+  playGame(gameParamsConstructor);
 };
 
 export default brainGcd;

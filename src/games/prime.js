@@ -1,23 +1,26 @@
-import startGame from '../index.js';
-import { getRandomIntNumber } from '../utils.js';
+import playGame from '../index.js';
+import { getRandomNumber } from '../utils.js';
 import { ANSWER_NO, ANSWER_YES } from '../constants.js';
 
 const isPrime = (num) => {
+  if (num <= 1) {
+    return false;
+  }
   for (let i = 2; i <= num / 2; i += 1) {
     if (num % i === 0) {
       return false;
     }
   }
-  return num > 1;
+  return true;
 };
 
 const askQuestion = () => {
-  const askingNumber = getRandomIntNumber();
-  const isEvenNumber = isPrime(askingNumber);
+  const askingNumber = getRandomNumber();
+  const evenNumber = isPrime(askingNumber);
 
   return {
-    questionText: `Question: ${askingNumber}\n`,
-    correctAnswer: isEvenNumber ? ANSWER_YES : ANSWER_NO,
+    questionText: askingNumber,
+    correctAnswer: evenNumber ? ANSWER_YES : ANSWER_NO,
   };
 };
 
@@ -26,12 +29,12 @@ const gameParamsConstructor = () => {
 
   return {
     title: gameTitle,
-    generateQuestionFunc: askQuestion,
+    makeQuestion: askQuestion,
   };
 };
 
 const primeGame = () => {
-  startGame(gameParamsConstructor);
+  playGame(gameParamsConstructor);
 };
 
 export default primeGame;

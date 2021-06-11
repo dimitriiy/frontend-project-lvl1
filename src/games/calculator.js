@@ -1,27 +1,21 @@
-import startGame from '../index.js';
-import { getRandomIntNumber, getRandomIntPair, prepareNumberToAnswer } from '../utils.js';
+import playGame from '../index.js';
+import { getRandomNumber, getRandomIntPair, prepareNumberToAnswer } from '../utils.js';
 
-const OPERATORS = [
-  '+', '-', '*',
-];
-
-const calculate = (x1, x2, operator) => {
-  const computingMap = {
-    '+': (a, b) => a + b,
-    '-': (a, b) => a - b,
-    '*': (a, b) => a * b,
-  };
-
-  return computingMap[operator](x1, x2);
+const computingMap = {
+  '+': (a, b) => a + b,
+  '-': (a, b) => a - b,
+  '*': (a, b) => a * b,
 };
+const OPERATORS = Object.keys(computingMap);
 
+const calculate = (x1, x2, operator) => computingMap[operator](x1, x2);
 const askQuestion = () => {
   const [firstOperand, secondOperand] = getRandomIntPair();
-  const operator = OPERATORS[getRandomIntNumber(0, OPERATORS.length - 1)];
+  const operator = OPERATORS[getRandomNumber(0, OPERATORS.length - 1)];
   const calculatedValue = calculate(firstOperand, secondOperand, operator);
 
   return {
-    questionText: `Question: ${firstOperand} ${operator} ${secondOperand}`,
+    questionText: `${firstOperand} ${operator} ${secondOperand}`,
     correctAnswer: prepareNumberToAnswer(calculatedValue),
   };
 };
@@ -31,12 +25,12 @@ const gameParamsConstructor = () => {
 
   return {
     title: gameTitle,
-    generateQuestionFunc: askQuestion,
+    makeQuestion: askQuestion,
   };
 };
 
 const calculator = () => {
-  startGame(gameParamsConstructor);
+  playGame(gameParamsConstructor);
 };
 
 export default calculator;

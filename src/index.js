@@ -1,20 +1,20 @@
 import readlineSync from 'readline-sync';
 import { NUMBER_OF_SUCCESS_TRIES } from './constants.js';
 
-const startGame = (gameParamsCreator) => {
+const playGame = (makeGame) => {
   console.log('Welcome to the Brain Games!');
   const name = readlineSync.question('May I have your name? ');
   console.log(`Hello, ${name}!`);
 
-  const { generateQuestionFunc, title } = gameParamsCreator();
+  const { makeQuestion: makeQuestionInformation, title } = makeGame();
   console.log(title);
 
   let countOfCorrectAnswers = 0;
 
   while (countOfCorrectAnswers < NUMBER_OF_SUCCESS_TRIES) {
-    const { questionText, correctAnswer } = generateQuestionFunc();
+    const { questionText, correctAnswer } = makeQuestionInformation();
 
-    console.log(questionText);
+    console.log(`Question: ${questionText}`);
     const userAnswer = readlineSync.question('Your answer: ');
 
     if (userAnswer !== correctAnswer) {
@@ -30,4 +30,4 @@ const startGame = (gameParamsCreator) => {
   console.log(`Congratulations, ${name}!`);
 };
 
-export default startGame;
+export default playGame;

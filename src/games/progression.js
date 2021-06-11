@@ -1,46 +1,46 @@
-import { getRandomIntNumber, prepareNumberToAnswer } from '../utils.js';
-import startGame from '../index.js';
+import { getRandomNumber, prepareNumberToAnswer } from '../utils.js';
+import playGame from '../index.js';
 
-const getProgressionArray = (length = 10) => {
-  const offset = getRandomIntNumber();
+const getProgression = ({ start, offset, length = 10 }) => Array.from({ length }).reduce((acc) => {
+  if (acc.length === 0) {
+    return [start];
+  }
 
-  return Array.from({ length }).reduce((acc) => {
-    if (acc.length === 0) {
-      return [getRandomIntNumber()];
-    }
+  const last = acc[acc.length - 1];
+  // eslint-disable-next-line no-param-reassign
+  acc = [...acc, last + offset];
+  return acc;
+}, [start]);
 
-    const last = acc[acc.length - 1];
-    // eslint-disable-next-line no-param-reassign
-    acc = [...acc, last + offset];
-    return acc;
-  }, []);
-};
-
-export const askQuestion = () => {
+const askQuestion = () => {
   const lengthOfProgression = 10;
-  const hiddenNumberIndex = getRandomIntNumber() % lengthOfProgression;
-  const progression = getProgressionArray(lengthOfProgression);
-
+  const hiddenNumberIndex = getRandomNumber() % lengthOfProgression;
+  const firstElementInProgression = getRandomNumber();
+  const offsetInProgression = getRandomNumber();
+  // eslint-disable-next-line max-len
+  const progression = getProgression({ start: firstElementInProgression, offset: offsetInProgression, length: lengthOfProgression });
   const hiddenNumber = progression[hiddenNumberIndex];
   progression[hiddenNumberIndex] = '..';
 
   return {
-    questionText: `Question: ${progression.join(' ')}`,
+    questionText: progression.join(' '),
     correctAnswer: prepareNumberToAnswer(hiddenNumber),
   };
 };
 
 const gameParamsConstructor = () => {
-  const gameTitle = 'What number is missing in the progression?\n';
+  const gameTitle = 'What number is missing in the progression?';
 
   return {
     title: gameTitle,
-    generateQuestionFunc: askQuestion,
+    makeQuestion: askQuestion,
   };
 };
 
 const brainProgression = () => {
-  startGame(gameParamsConstructor);
+  playGame(gameParamsConstructor);
 };
 
 export default brainProgression;
+
+brainProgression()
